@@ -1,23 +1,22 @@
-import random as rd
-import string as st
+import random
+import string
 
-#input the length of password
-length= int(input("Enter the length of password: "))
+def generate_password(length):
+    # Combine character sets
+    all_characters = string.ascii_letters + string.digits + string.punctuation
 
-# define data
-lower = st.ascii_lowercase
-upper = st.ascii_uppercase
-numbers = st.digits
-symbols = st.punctuation
+    # Use random.choices for more efficiency and readability
+    password = ''.join(random.choices(all_characters, k=length))
 
-# combine the data 
-all = lower + upper + numbers + symbols
+    return password
 
-#use randome 
-tmp = rd.sample(all,length)
+def main():
+    # Input the length of the password
+    length = int(input("Enter the length of the password: "))
 
-#create a password 
-password ="".join(tmp)
+    # Generate and print the password
+    password = generate_password(length)
+    print(password)
 
-#print the password
-print(password)
+if __name__ == "__main__":
+    main()
